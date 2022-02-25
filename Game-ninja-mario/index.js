@@ -1,45 +1,62 @@
-const canvas =document.querySelector(
-    'canvas')
-    const c = canvas.getContext ('2d')
-let image = new Image()
+const canvas = document.querySelector ("canvas")
 
-image.src = 'https://cdna.artstation.com/p/assets/images/images/013/740/724/large/andrew-melfi-no-name-ninja-background.jpg?1540926668'
+const c = canvas.getContext ('2d')
+var myGamePiece
+var myObstacle
 
-let i = 0
-let j = canvas.width
+function startGame() {
+  myGamePiece = new component(30, 30, "red", 10, 120)
+  myObstacle = new component(10, 200, "green", 300, 120)
+  myGameArea.start()
+}
 
-c.clearRect(-1, -2, canvas.width, canvas.height)
-const drawImage = ()=>{
-}; 
+function updateGameArea() {
+  myGameArea.clear()
+  myObstacle.update()
+  myGamePiece.newPos()
+  myGamePiece.update()
+}
+// let image = new Image()
 
-i--;
+// image.src = 'https://cdna.artstation.com/p/assets/images/images/013/740/724/large/andrew-melfi-no-name-ninja-background.jpg?1540926668'
 
-  if (i <= -canvas.width) {
-    i = canvas.width
-  }
+// let i = 0
+// let j = canvas.width
 
-  j--
+// c.clearRect(-1, -2, canvas.width, canvas.height)
+// const drawImage = ()=>{
+// }; 
 
-  if (j <= -canvas.width) {
-    j = canvas.width
-  }
+// i--;
+
+//   if (i <= -canvas.width) {
+//     i = canvas.width
+//   }
+
+//   j--
+
+//   if (j <= -canvas.width) {
+//     j = canvas.width
+//   }
 
 
-  c.drawImage(image, i, 0, canvas.width, canvas.height)
+//   c.drawImage(image, i, 0, canvas.width, canvas.height)
 
-  c.drawImage(image, j, 0, canvas.width, canvas.height)
+//   c.drawImage(image, j, 0, canvas.width, canvas.height)
 
-  let animation = requestAnimationFrame(draw)
+// let animation = requestAnimationFrame 
   
-draw()
+// function draw (){
+
 
 canvas.width = innerWidth
-canvas.height =innerHeight
+ canvas.height =innerHeight
 
-const gravity = 2.5
+ const gravity = 3
 
     class Player{
-        constructor() {
+    constructor() {
+        this.speed = 10
   this.position = {
       x: 100,
       y: 100
@@ -52,7 +69,7 @@ const gravity = 2.5
   this.height = 30
         }
         draw() {
-  c.fillStyle = 'red'
+  c.drawImage 
 c.fillRect (this.position.x, this.position.y, this.width, this.height
     )
         }
@@ -64,25 +81,8 @@ c.fillRect (this.position.x, this.position.y, this.width, this.height
         if (this.position.y + this.height + this.velocity.y  <= canvas.height)
         this.velocity.y += gravity  
         else this.velocity.y = 0
-        }
+      }
     }
-    
-//     class Platform {
-//     constructor () {
-//      this.position = {
-//      x: 200,
-//      y: 200
-//    }
-
-//    this.width = 300
-//    this.height = 100
-//      }
-//          draw () {
-//    c.fillStyle = 'green'
-//    c.fillRect (this.position.x, this.position.y, this.width, this.height)
-//         }
-//      }
-//      const platform = new Platform()
 const player = new Player()
      const keys ={
          right: {
@@ -92,29 +92,43 @@ const player = new Player()
    pressed: false
      }
 }
+class wallpaper{
+constructor ({ x, y, image }){
+    this.position ={
+        x,
+        y
+    }
+    this.image = image
+    this.width = image.width
+    this.height = image.height
+}
+draw() {
+    c.drawImage (this.image, this.position.x, this.position.y)
+}
+}
+//const image = new image ()
+  //  image.src = wallpaper
+//console.log (image)
 
     function animate() {
         requestAnimationFrame (animate)
-
         c.clearRect(0, 0, canvas.width, canvas.height)
-
         player.update ()
 
-    // platform.draw()
+        if (keys.right.pressed && player.position.x < 300) {
+  player.velocity.x = 3
         
-        if (keys.right.pressed) {
-  player.velocity.x = 5
-        
-        }else if (keys.left.pressed){
+        }else if (keys.left.pressed && player.position.x > 10){
   player.velocity.x = -5
         
         }else player.velocity.x = 0
-
-        // if (player.position.y + player.height
-            // <= platform.position.y) {
-        //         player.velocity.y = 0
-        //     }
-         }
+        if (keys.right.pressed) {
+        //platform.position.x -= 5
+        }
+        else if (keys.left.pressed){
+           // platform.position.x += 5
+        }
+        }
 
     animate()
     
@@ -127,7 +141,8 @@ addEventListener ('keydown', ({ keyCode }) => {
 
   case 38:
   console.log ('up')
-  player.velocity.y -= 40
+  player.velocity.y -= 30
+  //keys.up.pressed = true
   break
 
   case 39:
@@ -135,13 +150,13 @@ addEventListener ('keydown', ({ keyCode }) => {
   keys.right.pressed = true
   break
 
-  case 40:
-  console.log ('down')
-  break
+//   case 40:
+//   console.log ('down')
+//   break
     }
 })
 addEventListener ('keyup', ({ keyCode }) => {
-    //console.log ('keyCode')
+   
     switch (keyCode){
         case 37:
   console.log ('left')
@@ -157,9 +172,9 @@ addEventListener ('keyup', ({ keyCode }) => {
   keys.right.pressed = false
   break
 
-  case 40:
-  console.log ('down')
-  break
+//   case 40:
+//   console.log ('down')
+//   break
     }
 
 })
