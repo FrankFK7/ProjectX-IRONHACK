@@ -1,36 +1,37 @@
-//const canvas = document.querySelector ("canvas")
-//const c = canvas.getContext("2d")
-let image = new Image()
-image.src ="https://cdna.artstation.com/p/assets/images/images/013/740/724/large/andrew-melfi-no-name-ninja-background.jpg?1540926668";
+// const canvas = document.querySelector ("canvas")
+// // const c = canvas.getContext("2d")
 
-let i = 0;
-let j = canvas.width;
+// let image = new Image()
+// image.src ="https://cdna.artstation.com/p/assets/images/images/013/740/724/large/andrew-melfi-no-name-ninja-background.jpg?1540926668";
 
-function draw() {
-c.clearRect(-1, -2, canvas.width, canvas.height)
+// let i = 0
+// let j = canvas.width
 
-const drawImage =() =>{
+// function draw() {
+// c.clearRect(-1, -2, canvas.width, canvas.height)
 
-//   const animation 
-  i--; 
+// const drawImage =() =>{
 
-  if (i <= -canvas.width) {
-    i = canvas.width;
-  }
+// //   const animation 
+//   i--; 
 
-  j--; 
+//   if (i <= -canvas.width) {
+//     i = canvas.width;
+//   }
 
-  if (j <= -canvas.width) {
-    j = canvas.width
-  }
+//   j--; 
+
+//   if (j <= -canvas.width) {
+//     j = canvas.width
+//   }
 
   
- let background =new backgroundImage (0, 0, canvas.height, canvas.width, image)
+//  let background =new backgroundImage (0, 0, canvas.height, canvas.width, image)
 
-  // c.drawImage(image, i, 0, canvas.width, canvas.height);
-  // c.drawImage(image, j, 0, canvas.width, canvas.height);
+//   // c.drawImage(image, i, 0, canvas.width, canvas.height);
+//   // c.drawImage(image, j, 0, canvas.width, canvas.height);
 
-  let animation = requestAnimationFrame(draw)
-}
-drawImage()
-}
+//  // let animation = requestAnimationFrame(draw)
+// }
+// draw()
+// }
