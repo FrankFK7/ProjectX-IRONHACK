@@ -1,0 +1,23 @@
+import { createContext , useState, useEffect } from "react";
+
+const listContext = createContext();
+
+export const ListProvider = ({ children }) => {
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem("list")) || null
+  );
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
+
+  return (
+    //Whichever states/function we want to use as a global variable(useState), you have to pass it as a value
+    <ListContext.Provider value={{ list, setList }}>
+      {children}
+
+    </ListContext.Provider>
+  );
+};
+
+export default ListContext;
